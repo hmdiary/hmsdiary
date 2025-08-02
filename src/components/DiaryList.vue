@@ -44,6 +44,8 @@ const formatDate = (dateStr) => {
     height: 100%;
     width: 100%;
     background-color: #f9f9f9;
+    overflow: hidden;
+    /* 防止容器自身出现滚动条 */
 }
 
 .list-header {
@@ -68,6 +70,8 @@ const formatDate = (dateStr) => {
     overflow-y: auto;
     /* 内容超出时滚动 */
     padding: 10px;
+    height: 0;
+    /* 关键：设置高度为0，让flex-grow控制实际高度 */
 }
 
 .empty-state {
@@ -118,6 +122,8 @@ const formatDate = (dateStr) => {
 
     .scroll-area {
         padding: 10px 0;
+        height: 0;
+        /* 确保桌面端也有正确的height设置 */
     }
 
     .diary-item {
