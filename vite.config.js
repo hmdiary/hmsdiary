@@ -17,6 +17,5 @@ export default defineConfig({
     outDir: "docs",
     assetsInlineLimit: 0
   },
-  publicPath: './',
-  base: './',
+  base: '/hmsdiary/',
 })

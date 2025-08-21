@@ -17,7 +17,8 @@ const diaryHtml = computed(() => {
     if (props.diary && props.diary.content) {
         let content = props.diary.content;
         // 处理图片路径：将相对路径转换为正确的路径
-        content = content.replace(/!\[(.*?)\]\(\.\.\/pics\/(.*?)\)/g, '![$1](./pics/$2)');
+        const basePath = import.meta.env.BASE_URL;
+        content = content.replace(/!\[(.*?)\]\(\.\.\/pics\/(.*?)\)/g, `![$1](${basePath}pics/$2)`);
         return marked(content);
     }
     return '';
