@@ -15,7 +15,10 @@ marked.setOptions({
 
 const diaryHtml = computed(() => {
     if (props.diary && props.diary.content) {
-        return marked(props.diary.content);
+        let content = props.diary.content;
+        // 处理图片路径：将相对路径转换为正确的路径
+        content = content.replace(/!\[(.*?)\]\(\.\.\/pics\/(.*?)\)/g, '![$1](./pics/$2)');
+        return marked(content);
     }
     return '';
 });

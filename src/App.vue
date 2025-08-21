@@ -15,10 +15,10 @@ const selectedDiary = computed(() => {
 
 // --- Logic ---
 const loadDiaries = async () => {
-  const diaryModules = import.meta.glob('./diaries/*.md', { as: 'raw', eager: true });
+  const diaryModules = import.meta.glob('./diaries/*.md', { query: '?raw', import: 'default' });
   const loadedDiaries = [];
   for (const path in diaryModules) {
-    const content = diaryModules[path];
+    const content = await diaryModules[path]();
     const filename = path.split('/').pop();
     const match = filename.match(/^(\d{4}-\d{2}-\d{2})-(.+)\.md$/);
     if (match) {
